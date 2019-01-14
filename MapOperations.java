@@ -9,7 +9,8 @@ public class MapOperations {
 
         System.out.println("Initial Map 1 " + map1);
         System.out.println("Initial Map 2 " + map2);
-//Merge maps
+
+//MERGE MAPS
         map2.forEach((key, value) -> map1.merge(key, value, (v1, v2) -> {
             if (v2.equalsIgnoreCase("0")) {
                 return null;
@@ -17,9 +18,7 @@ public class MapOperations {
                 return v2;
             }
         }));
-
         System.out.println("Merge " +map1);
-
 
 // COMPUTE
         HashMap<Integer, String> map3 = initialiseMap1();
@@ -29,14 +28,13 @@ public class MapOperations {
         map4.forEach((key, value) -> map3.compute(key, (k, v) -> value));
         System.out.println("Compute "  + map3);
 
-
 // COMPUTE IF PRESENT
         HashMap<Integer, String> map5 = initialiseMap1();
         HashMap<Integer, String> map6 = initialiseMap2();
         System.out.println("\nInitial Map 5 " + map5);
         System.out.println("Initial Map 6 " + map6);
         map6.forEach((key, value) -> map5.computeIfPresent(key, (k, v) -> value));
-        System.out.println("If Present " +map5);
+        System.out.println("Compute If Present " +map5);
 
 // COMPUTE IF ABSENT
         HashMap<Integer, String> map7 = initialiseMap1();
@@ -44,7 +42,16 @@ public class MapOperations {
         System.out.println("\nInitial Map 7 " + map7);
         System.out.println("Initial Map 8 " + map8);
         map8.forEach((key, value) -> map7.computeIfAbsent(key, (v) -> value));
-        System.out.println("If Absent " +map7);
+        System.out.println("Compute If Absent " +map7);
+
+
+// PUT IF ABSENT
+        HashMap<Integer, String> map9 = initialiseMap1();
+        HashMap<Integer, String> map10 = initialiseMap2();
+        System.out.println("\nInitial Map 9 " + map9);
+        System.out.println("Initial Map 10 " + map10);
+        map10.forEach((key, value) -> map9.putIfAbsent(key,value));
+        System.out.println("Put If Absent " +map9);
 
     }
 
